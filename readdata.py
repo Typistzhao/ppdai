@@ -48,12 +48,12 @@ def read_data(use_data,file=None,data_aug=False):
         train = pd.concat([train,samples]).reset_index(drop=True)
 
 
-    test = pd.read_csv('./data/test.csv',usecols=['q1','q2'])
     train = pd.merge(train, question, left_on=['q1'], right_on=['qid'], how='left')
     train = pd.merge(train, question, left_on=['q2'], right_on=['qid'], how='left')
     train = train[[use_data+'_x', use_data+'_y','label']]
     train.columns = ['q1', 'q2','label']
 
+    test = pd.read_csv('./data/test.csv',usecols=['q1','q2'])
     test = pd.merge(test, question, left_on=['q1'], right_on=['qid'], how='left')
     test = pd.merge(test, question, left_on=['q2'], right_on=['qid'], how='left')
     test = test[[use_data+'_x', use_data+'_y']]

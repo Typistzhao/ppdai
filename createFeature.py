@@ -243,6 +243,5 @@ labels = train['label']
 
 test['label'] = pd.read_csv('147037.csv')['y_pre']
 
-
 print(train.corr())
 print(test.corr())
